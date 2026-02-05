@@ -171,6 +171,9 @@ vim.o.confirm = true
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Remove all CR (^M) characters in the current buffer
+vim.keymap.set('n', '<leader>rm', function() vim.cmd [[%s/\r//g]] end, { desc = 'Remove ^M (CR) characters' })
+
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
@@ -265,7 +268,7 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be load.
   --
--- Alternatively, use `config = function() ... end` for full control over the configuration.
+  -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
   --    {
   --        'lewis6991/gitsigns.nvim',
